@@ -1,23 +1,21 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 
-class sideList extends Component{
-	render(){
-		var savedList = this.props.savedList.map(name =>{
-			return(
+export default class sideList extends Component {
+	render() {
+		if (this.props.savedList !== undefined){
+		var savedList = this.props.savedList.map(name => {
+			return (
 				<div className="alert" key={name}>
-					<button className="btn btn-xs btn-primary pull-right">Click for more info</button>
-					<strong>{name}</strong>
+					<button className="btn btn-xs btn-primary pull-right" onClick={() => this.props.updatedList(name)} > <i class="fas fa-frown"> </i> Remove from Favorites </button>
+					<strong> {name} </strong>
 				</div>
 			)
-		})
-
+		})}
 		return (
 			<ul>
-				<h3>Saved Places</h3>
+				<h3>Favorite Places</h3>
 				{savedList}
 			</ul>
 		)
 	}
 }
-
-export default sideList;
